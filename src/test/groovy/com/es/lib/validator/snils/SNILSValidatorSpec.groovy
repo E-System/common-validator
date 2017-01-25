@@ -18,7 +18,7 @@ class SNILSValidatorSpec extends Specification {
 
     def "Skip validation when value is null"() {
         setup:
-        def validator = new SNILSValidator();
+        def validator = new SNILSValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -29,19 +29,19 @@ class SNILSValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new SNILSValidator();
+        def validator = new SNILSValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
         !res
         where:
-        value << ["", "1", "12", "123456789", "1234567890", "1234567890123", "11223344596", "08765430301", "08265430200", "08765430311"]
+        value << ["", "1", "12", "123456789", "1234567890", "1234567890123", "11223344596", "08765430301", "08265430200", "08765430311", "qwe", "1й223344595"]
     }
 
 
     def "Success when valid values"() {
         setup:
-        def validator = new SNILSValidator();
+        def validator = new SNILSValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:

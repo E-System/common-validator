@@ -35,7 +35,7 @@ class KPPValidatorSpec extends Specification {
         then:
         !res
         where:
-        value << ["", "1", "12345678", "12345678910", "AAAA12123", "AAAA12BBB", "AAAAAAAAA", "фывапролд", "1111az122"]
+        value << ["", "1", "12345678", "12345678910", "AAAA12123", "AAAA12BBB", "AAAAAAAAA", "фывапролд", "1111az122", "qwe", "1й1111122"]
     }
 
 

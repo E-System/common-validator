@@ -18,7 +18,7 @@ class INNValidatorSpec extends Specification {
 
     def "Skip validation when value is null"() {
         setup:
-        def validator = new INNValidator();
+        def validator = new INNValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -29,19 +29,19 @@ class INNValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new INNValidator();
+        def validator = new INNValidator()
         when:
         def res = validator.isValid(value, null)
         then:
         !res
         where:
-        value << ["", "1", "12", "123456789", "12345678901", "1234567890123", "1234567890", "1111111111", "123456789012", "111111111111"]
+        value << ["", "1", "12", "123456789", "12345678901", "1234567890123", "1234567890", "1111111111", "123456789012", "111111111111", "qwe", "7й30002293"]
     }
 
 
     def "Success when valid values"() {
         setup:
-        def validator = new INNValidator();
+        def validator = new INNValidator()
         when:
         def res = validator.isValid(value, null)
         then:
