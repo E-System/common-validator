@@ -6,7 +6,7 @@
  * Written by E-System team (https://ext-system.com), 2015
  */
 
-package com.es.lib.validator.kpp
+package com.es.lib.validator.ogrn
 
 
 import spock.lang.Specification
@@ -18,14 +18,13 @@ import java.lang.annotation.Annotation
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 25.04.15
  */
-class KPPValidatorSpec extends Specification {
+class OGRNIPValidatorSpec extends Specification {
 
     def "Initialize"() {
         setup:
-        def validator = new KPPValidator()
+        def validator = new OGRNIPValidator()
         expect:
-        validator.initialize(new KPP(){
-
+        validator.initialize(new OGRNIP(){
             @Override
             String message() {
                 return null
@@ -50,7 +49,7 @@ class KPPValidatorSpec extends Specification {
 
     def "Skip validation when value is null"() {
         setup:
-        def validator = new KPPValidator()
+        def validator = new OGRNIPValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -61,24 +60,24 @@ class KPPValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new KPPValidator()
+        def validator = new OGRNIPValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
         !res
         where:
-        value << ["", "1", "12345678", "12345678910", "AAAA12123", "AAAA12BBB", "AAAAAAAAA", "фывапролд", "1111az122", "qwe", "1й1111122"]
+        value << ["", "1", "12345678", "123456789101", "12345678901234", "1234567890123456", "5077746887311", "1077746887312", "qwe", "3й4500116000221"]
     }
 
 
     def "Success when valid values"() {
         setup:
-        def validator = new KPPValidator()
+        def validator = new OGRNIPValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
         res
         where:
-        value << ["1111AZ122", "111111122"]
+        value << ["313132804400022", "304500116000157"]
     }
 }

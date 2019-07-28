@@ -8,7 +8,11 @@
 
 package com.es.lib.validator.ogrn
 
+
 import spock.lang.Specification
+
+import javax.validation.Payload
+import java.lang.annotation.Annotation
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
@@ -16,9 +20,37 @@ import spock.lang.Specification
  */
 class OGRNValidatorSpec extends Specification {
 
+    def "Initialize"() {
+        setup:
+        def validator = new OGRNValidator()
+        expect:
+        validator.initialize(new OGRN(){
+
+            @Override
+            String message() {
+                return null
+            }
+
+            @Override
+            Class<?>[] groups() {
+                return new Class[0]
+            }
+
+            @Override
+            Class<? extends Payload>[] payload() {
+                return new Class[0]
+            }
+
+            @Override
+            Class<? extends Annotation> annotationType() {
+                return null
+            }
+        })
+    }
+
     def "Skip validation when value is null"() {
         setup:
-        def validator = new OGRNValidator();
+        def validator = new OGRNValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -29,7 +61,7 @@ class OGRNValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new OGRNValidator();
+        def validator = new OGRNValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -41,7 +73,7 @@ class OGRNValidatorSpec extends Specification {
 
     def "Success when valid values"() {
         setup:
-        def validator = new OGRNValidator();
+        def validator = new OGRNValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:

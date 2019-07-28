@@ -10,11 +10,42 @@ package com.es.lib.validator.inn
 
 import spock.lang.Specification
 
+import javax.validation.Payload
+import java.lang.annotation.Annotation
+
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 25.04.15
  */
 class INNValidatorSpec extends Specification {
+
+    def "Initialize"() {
+        setup:
+        def validator = new INNValidator()
+        expect:
+        validator.initialize(new INN(){
+
+            @Override
+            String message() {
+                return null
+            }
+
+            @Override
+            Class<?>[] groups() {
+                return new Class[0]
+            }
+
+            @Override
+            Class<? extends Payload>[] payload() {
+                return new Class[0]
+            }
+
+            @Override
+            Class<? extends Annotation> annotationType() {
+                return null
+            }
+        })
+    }
 
     def "Skip validation when value is null"() {
         setup:
