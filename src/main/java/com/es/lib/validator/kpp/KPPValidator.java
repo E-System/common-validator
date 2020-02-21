@@ -30,9 +30,7 @@ import javax.validation.ConstraintValidatorContext;
 public class KPPValidator implements ConstraintValidator<KPP, String> {
 
     @Override
-    public void initialize(KPP inn) {
-        // Nothing to initialize
-    }
+    public void initialize(KPP inn) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

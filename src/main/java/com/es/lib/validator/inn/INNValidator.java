@@ -30,9 +30,7 @@ import javax.validation.ConstraintValidatorContext;
 public class INNValidator implements ConstraintValidator<INN, String> {
 
     @Override
-    public void initialize(INN inn) {
-        // Nothing to initialize
-    }
+    public void initialize(INN inn) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

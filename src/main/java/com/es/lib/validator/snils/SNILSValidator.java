@@ -30,9 +30,7 @@ import javax.validation.ConstraintValidatorContext;
 public class SNILSValidator implements ConstraintValidator<SNILS, String> {
 
     @Override
-    public void initialize(SNILS snils) {
-        // Nothing to initialize
-    }
+    public void initialize(SNILS snils) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
