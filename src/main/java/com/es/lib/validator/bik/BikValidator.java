@@ -14,25 +14,30 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.snils;
+package com.es.lib.validator.bik;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import java.lang.annotation.*;
+import com.es.lib.common.validation.ValidateException;
+import com.es.lib.common.validation.bik.BikValidatorUtil;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 13.06.16
  */
-@Documented
-@Constraint(validatedBy = SNILSValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface SNILS {
+public class BikValidator implements ConstraintValidator<Bik, String> {
 
-    String message() default "{snils.error}";
+    @Override
+    public void initialize(Bik inn) { }
 
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        try {
+            BikValidatorUtil.validate(value);
+            return true;
+        } catch (ValidateException e) {
+            return false;
+        }
+    }
 }

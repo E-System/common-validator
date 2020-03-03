@@ -16,9 +16,8 @@
 
 package com.es.lib.validator.inn;
 
-import com.es.lib.common.validation.BadLengthException;
-import com.es.lib.common.validation.BadValueException;
-import com.es.lib.common.validation.inn.INNValidatorUtil;
+import com.es.lib.common.validation.ValidateException;
+import com.es.lib.common.validation.inn.InnValidatorUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -27,20 +26,17 @@ import javax.validation.ConstraintValidatorContext;
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 13.06.16
  */
-public class INNValidator implements ConstraintValidator<INN, String> {
+public class InnValidator implements ConstraintValidator<Inn, String> {
 
     @Override
-    public void initialize(INN inn) { }
+    public void initialize(Inn inn) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
         try {
-            INNValidatorUtil.validate(value);
+            InnValidatorUtil.validate(value);
             return true;
-        } catch (BadValueException | BadLengthException e) {
+        } catch (ValidateException e) {
             return false;
         }
     }

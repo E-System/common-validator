@@ -17,13 +17,13 @@ import java.lang.annotation.Annotation
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 25.04.15
  */
-class INNValidatorSpec extends Specification {
+class InnValidatorSpec extends Specification {
 
     def "Initialize"() {
         setup:
-        def validator = new INNValidator()
+        def validator = new InnValidator()
         expect:
-        validator.initialize(new INN(){
+        validator.initialize(new Inn(){
 
             @Override
             String message() {
@@ -49,7 +49,7 @@ class INNValidatorSpec extends Specification {
 
     def "Skip validation when value is null"() {
         setup:
-        def validator = new INNValidator()
+        def validator = new InnValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -60,7 +60,7 @@ class INNValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new INNValidator()
+        def validator = new InnValidator()
         when:
         def res = validator.isValid(value, null)
         then:
@@ -72,7 +72,7 @@ class INNValidatorSpec extends Specification {
 
     def "Success when valid values"() {
         setup:
-        def validator = new INNValidator()
+        def validator = new InnValidator()
         when:
         def res = validator.isValid(value, null)
         then:

@@ -14,33 +14,29 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.snils;
+package com.es.lib.validator.kpp;
 
-import com.es.lib.common.validation.BadLengthException;
-import com.es.lib.common.validation.BadValueException;
-import com.es.lib.common.validation.snils.SNILSValidatorUtil;
+import com.es.lib.common.validation.ValidateException;
+import com.es.lib.common.validation.kpp.KppValidatorUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
- * @since 13.06.16
+ * @since 25.07.16
  */
-public class SNILSValidator implements ConstraintValidator<SNILS, String> {
+public class KppValidator implements ConstraintValidator<Kpp, String> {
 
     @Override
-    public void initialize(SNILS snils) { }
+    public void initialize(Kpp inn) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
         try {
-            SNILSValidatorUtil.validate(value);
+            KppValidatorUtil.validate(value);
             return true;
-        } catch (BadValueException | BadLengthException e) {
+        } catch (ValidateException e) {
             return false;
         }
     }

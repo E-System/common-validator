@@ -18,13 +18,13 @@ import java.lang.annotation.Annotation
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 25.04.15
  */
-class SNILSValidatorSpec extends Specification {
+class SnilsValidatorSpec extends Specification {
 
     def "Initialize"() {
         setup:
-        def validator = new SNILSValidator()
+        def validator = new SnilsValidator()
         expect:
-        validator.initialize(new SNILS(){
+        validator.initialize(new Snils(){
 
             @Override
             String message() {
@@ -50,7 +50,7 @@ class SNILSValidatorSpec extends Specification {
 
     def "Skip validation when value is null"() {
         setup:
-        def validator = new SNILSValidator()
+        def validator = new SnilsValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -61,7 +61,7 @@ class SNILSValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new SNILSValidator()
+        def validator = new SnilsValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -73,7 +73,7 @@ class SNILSValidatorSpec extends Specification {
 
     def "Success when valid values"() {
         setup:
-        def validator = new SNILSValidator()
+        def validator = new SnilsValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:

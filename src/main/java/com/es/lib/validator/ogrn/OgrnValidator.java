@@ -16,9 +16,8 @@
 
 package com.es.lib.validator.ogrn;
 
-import com.es.lib.common.validation.BadLengthException;
-import com.es.lib.common.validation.BadValueException;
-import com.es.lib.common.validation.ogrn.OGRNValidatorUtil;
+import com.es.lib.common.validation.ValidateException;
+import com.es.lib.common.validation.ogrn.OgrnValidatorUtil;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -27,20 +26,21 @@ import javax.validation.ConstraintValidatorContext;
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 25.07.16
  */
-public class OGRNIPValidator implements ConstraintValidator<OGRNIP, String> {
+public class OgrnValidator implements ConstraintValidator<Ogrn, String> {
+
+    private OgrnValidatorUtil.Type type;
 
     @Override
-    public void initialize(OGRNIP inn) { }
+    public void initialize(Ogrn inn) {
+        type = inn.value();
+    }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
         try {
-            OGRNValidatorUtil.validate15(value);
+            OgrnValidatorUtil.validate(value, type);
             return true;
-        } catch (BadValueException | BadLengthException e) {
+        } catch (ValidateException e) {
             return false;
         }
     }

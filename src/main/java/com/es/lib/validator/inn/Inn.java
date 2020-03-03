@@ -14,19 +14,23 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.kpp;
+package com.es.lib.validator.inn;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
+/**
+ * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
+ * @since 13.06.16
+ */
 @Documented
-@Constraint(validatedBy = KPPValidator.class)
+@Constraint(validatedBy = InnValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface KPP {
+public @interface Inn {
 
-    String message() default "{kpp.error}";
+    String message() default "{inn.error}";
 
     Class<?>[] groups() default {};
 

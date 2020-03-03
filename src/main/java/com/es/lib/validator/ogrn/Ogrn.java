@@ -16,6 +16,8 @@
 
 package com.es.lib.validator.ogrn;
 
+import com.es.lib.common.validation.ogrn.OgrnValidatorUtil;
+
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
@@ -25,12 +27,14 @@ import java.lang.annotation.*;
  * @since 25.07.16
  */
 @Documented
-@Constraint(validatedBy = OGRNIPValidator.class)
+@Constraint(validatedBy = OgrnValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface OGRNIP {
+public @interface Ogrn {
 
-    String message() default "{ogrnip.error}";
+    OgrnValidatorUtil.Type value() default OgrnValidatorUtil.Type.ANY;
+
+    String message() default "{ogrn.error}";
 
     Class<?>[] groups() default {};
 
