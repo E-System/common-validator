@@ -14,23 +14,21 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.snils;
+package com.es.lib.validator.annotaion;
+
+import com.es.lib.validator.KppValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
-/**
- * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
- * @since 13.06.16
- */
 @Documented
-@Constraint(validatedBy = SnilsValidator.class)
+@Constraint(validatedBy = KppValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Snils {
+public @interface Kpp {
 
-    String message() default "{snils.error}";
+    String message() default "{kpp.error}";
 
     Class<?>[] groups() default {};
 

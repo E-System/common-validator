@@ -14,34 +14,25 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.ogrn;
+package com.es.lib.validator;
 
-import com.es.lib.common.validation.ValidateException;
-import com.es.lib.common.validation.ogrn.OgrnValidatorUtil;
+import com.es.lib.common.validation.SnilsValidatorUtil;
+import com.es.lib.validator.annotaion.Snils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
- * @since 25.07.16
+ * @since 13.06.16
  */
-public class OgrnValidator implements ConstraintValidator<Ogrn, String> {
-
-    private OgrnValidatorUtil.Type type;
+public class SnilsValidator implements ConstraintValidator<Snils, String> {
 
     @Override
-    public void initialize(Ogrn inn) {
-        type = inn.value();
-    }
+    public void initialize(Snils snils) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        try {
-            OgrnValidatorUtil.validate(value, type);
-            return true;
-        } catch (ValidateException e) {
-            return false;
-        }
+        return SnilsValidatorUtil.isValid(value);
     }
 }

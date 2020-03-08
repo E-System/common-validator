@@ -14,30 +14,27 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.kpp;
+package com.es.lib.validator.annotaion;
 
-import com.es.lib.common.validation.ValidateException;
-import com.es.lib.common.validation.kpp.KppValidatorUtil;
+import com.es.lib.validator.SnilsValidator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import java.lang.annotation.*;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
- * @since 25.07.16
+ * @since 13.06.16
  */
-public class KppValidator implements ConstraintValidator<Kpp, String> {
+@Documented
+@Constraint(validatedBy = SnilsValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Snils {
 
-    @Override
-    public void initialize(Kpp inn) { }
+    String message() default "{snils.error}";
 
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        try {
-            KppValidatorUtil.validate(value);
-            return true;
-        } catch (ValidateException e) {
-            return false;
-        }
-    }
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

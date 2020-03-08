@@ -14,21 +14,25 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.kpp;
+package com.es.lib.validator;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import java.lang.annotation.*;
+import com.es.lib.common.validation.BikValidatorUtil;
+import com.es.lib.validator.annotaion.Bik;
 
-@Documented
-@Constraint(validatedBy = KppValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Kpp {
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
-    String message() default "{kpp.error}";
+/**
+ * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
+ * @since 13.06.16
+ */
+public class BikValidator implements ConstraintValidator<Bik, String> {
 
-    Class<?>[] groups() default {};
+    @Override
+    public void initialize(Bik inn) { }
 
-    Class<? extends Payload>[] payload() default {};
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return BikValidatorUtil.isValid(value);
+    }
 }

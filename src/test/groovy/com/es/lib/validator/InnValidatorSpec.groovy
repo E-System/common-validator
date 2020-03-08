@@ -1,18 +1,30 @@
-package com.es.lib.validator.bik
+/*
+ * Copyright (c) E-System - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * Written by E-System team (https://ext-system.com), 2015
+ */
 
+package com.es.lib.validator
 
+import com.es.lib.validator.annotaion.Inn
 import spock.lang.Specification
 
 import javax.validation.Payload
 import java.lang.annotation.Annotation
 
-class BikValidatorSpec extends Specification {
+/**
+ * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
+ * @since 25.04.15
+ */
+class InnValidatorSpec extends Specification {
 
     def "Initialize"() {
         setup:
-        def validator = new BikValidator()
+        def validator = new InnValidator()
         expect:
-        validator.initialize(new Bik() {
+        validator.initialize(new Inn() {
 
             @Override
             String message() {
@@ -38,7 +50,7 @@ class BikValidatorSpec extends Specification {
 
     def "Skip validation when value is null"() {
         setup:
-        def validator = new BikValidator()
+        def validator = new InnValidator()
         when:
         def res = validator.isValid(value as String, null)
         then:
@@ -49,23 +61,24 @@ class BikValidatorSpec extends Specification {
 
     def "Exception when invalid values"() {
         setup:
-        def validator = new BikValidator()
+        def validator = new InnValidator()
         when:
         def res = validator.isValid(value, null)
         then:
         !res
         where:
-        value << ["", "1", "12345678", "12345678910", "AAAA12123", "AAAA12BBB", "AAAAAAAAA", "фывапролд", "1111az122", "1й1111122", "041212049"]
+        value << ["", "1", "12", "123456789", "12345678901", "1234567890123", "1234567890", "1111111111", "123456789012", "111111111111", "qwe", "7й30002293"]
     }
+
 
     def "Success when valid values"() {
         setup:
-        def validator = new BikValidator()
+        def validator = new InnValidator()
         when:
         def res = validator.isValid(value, null)
         then:
         res
         where:
-        value << ["043456789", "041212050"]
+        value << ["500100732259", "7830002293"]
     }
 }

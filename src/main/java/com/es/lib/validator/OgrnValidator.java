@@ -14,29 +14,30 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.ogrn;
+package com.es.lib.validator;
 
-import com.es.lib.common.validation.ogrn.OgrnValidatorUtil;
+import com.es.lib.common.validation.OgrnType;
+import com.es.lib.common.validation.OgrnValidatorUtil;
+import com.es.lib.validator.annotaion.Ogrn;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import java.lang.annotation.*;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 25.07.16
  */
-@Documented
-@Constraint(validatedBy = OgrnValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Ogrn {
+public class OgrnValidator implements ConstraintValidator<Ogrn, String> {
 
-    OgrnValidatorUtil.Type value() default OgrnValidatorUtil.Type.ANY;
+    private OgrnType type;
 
-    String message() default "{ogrn.error}";
+    @Override
+    public void initialize(Ogrn inn) {
+        type = inn.value();
+    }
 
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return OgrnValidatorUtil.isValid(value, type);
+    }
 }

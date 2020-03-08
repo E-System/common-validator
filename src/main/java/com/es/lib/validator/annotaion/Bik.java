@@ -14,30 +14,27 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.bik;
+package com.es.lib.validator.annotaion;
 
-import com.es.lib.common.validation.ValidateException;
-import com.es.lib.common.validation.bik.BikValidatorUtil;
+import com.es.lib.validator.InnValidator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import java.lang.annotation.*;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
  * @since 13.06.16
  */
-public class BikValidator implements ConstraintValidator<Bik, String> {
+@Documented
+@Constraint(validatedBy = InnValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Bik {
 
-    @Override
-    public void initialize(Bik inn) { }
+    String message() default "{bik.error}";
 
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        try {
-            BikValidatorUtil.validate(value);
-            return true;
-        } catch (ValidateException e) {
-            return false;
-        }
-    }
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

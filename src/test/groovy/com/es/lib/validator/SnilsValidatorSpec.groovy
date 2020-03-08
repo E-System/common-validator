@@ -6,9 +6,10 @@
  * Written by E-System team (https://ext-system.com), 2015
  */
 
-package com.es.lib.validator.snils
+package com.es.lib.validator
 
-
+import com.es.lib.validator.SnilsValidator
+import com.es.lib.validator.annotaion.Snils
 import spock.lang.Specification
 
 import javax.validation.Payload

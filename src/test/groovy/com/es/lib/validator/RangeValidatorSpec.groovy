@@ -1,6 +1,7 @@
-package com.es.lib.validator.range
+package com.es.lib.validator
 
-
+import com.es.lib.validator.RangeValidator
+import com.es.lib.validator.annotaion.Range
 import spock.lang.Shared
 import spock.lang.Specification
 

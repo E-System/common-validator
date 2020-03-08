@@ -14,9 +14,9 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.bik;
+package com.es.lib.validator.annotaion;
 
-import com.es.lib.validator.inn.InnValidator;
+import com.es.lib.validator.InnValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -30,7 +30,9 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = InnValidator.class)
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Bik {
+public @interface Range {
+
+    String value() default "";
 
     String message() default "{bik.error}";
 

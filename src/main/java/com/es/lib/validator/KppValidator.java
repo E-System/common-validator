@@ -14,25 +14,27 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.inn;
+package com.es.lib.validator;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import java.lang.annotation.*;
+
+
+import com.es.lib.common.validation.KppValidatorUtil;
+import com.es.lib.validator.annotaion.Kpp;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
- * @since 13.06.16
+ * @since 25.07.16
  */
-@Documented
-@Constraint(validatedBy = InnValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Inn {
+public class KppValidator implements ConstraintValidator<Kpp, String> {
 
-    String message() default "{inn.error}";
+    @Override
+    public void initialize(Kpp inn) { }
 
-    Class<?>[] groups() default {};
-
-    Class<? extends Payload>[] payload() default {};
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return KppValidatorUtil.isValid(value);
+    }
 }

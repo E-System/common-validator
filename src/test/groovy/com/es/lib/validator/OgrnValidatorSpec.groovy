@@ -6,9 +6,10 @@
  * Written by E-System team (https://ext-system.com), 2015
  */
 
-package com.es.lib.validator.ogrn
+package com.es.lib.validator
 
-import com.es.lib.common.validation.ogrn.OgrnValidatorUtil
+import com.es.lib.common.validation.OgrnType
+import com.es.lib.validator.annotaion.Ogrn
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -25,8 +26,8 @@ class OgrnValidatorSpec extends Specification {
     def ANY = new Ogrn() {
 
         @Override
-        OgrnValidatorUtil.Type value() {
-            return OgrnValidatorUtil.Type.ANY
+        OgrnType value() {
+            return OgrnType.ANY
         }
 
         @Override
@@ -54,8 +55,8 @@ class OgrnValidatorSpec extends Specification {
     def OGRN = new Ogrn() {
 
         @Override
-        OgrnValidatorUtil.Type value() {
-            return OgrnValidatorUtil.Type.OGRN
+        OgrnType value() {
+            return OgrnType.OGRN
         }
 
         @Override
@@ -83,8 +84,8 @@ class OgrnValidatorSpec extends Specification {
     def OGRNIP = new Ogrn() {
 
         @Override
-        OgrnValidatorUtil.Type value() {
-            return OgrnValidatorUtil.Type.OGRNIP
+        OgrnType value() {
+            return OgrnType.OGRNIP
         }
 
         @Override

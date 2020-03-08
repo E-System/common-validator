@@ -14,34 +14,26 @@
  *    limitations under the License.
  */
 
-package com.es.lib.validator.range;
+package com.es.lib.validator;
 
-import com.es.lib.common.validation.ValidateException;
-import com.es.lib.common.validation.range.RangeValidatorUtil;
+
+import com.es.lib.common.validation.InnValidatorUtil;
+import com.es.lib.validator.annotaion.Inn;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
- * @since 25.07.16
+ * @since 13.06.16
  */
-public class RangeValidator implements ConstraintValidator<Range, String> {
-
-    private String range;
+public class InnValidator implements ConstraintValidator<Inn, String> {
 
     @Override
-    public void initialize(Range inn) {
-        range = inn.value();
-    }
+    public void initialize(Inn inn) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        try {
-            RangeValidatorUtil.validate(value, range);
-            return true;
-        } catch (ValidateException e) {
-            return false;
-        }
+        return InnValidatorUtil.isValid(value);
     }
 }
