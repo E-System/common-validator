@@ -16,7 +16,7 @@
 
 package com.es.lib.validator;
 
-import com.es.lib.common.validation.BikValidatorUtil;
+import com.es.lib.common.validation.Validators;
 import com.es.lib.validator.annotaion.Bik;
 
 import javax.validation.ConstraintValidator;
@@ -33,6 +33,6 @@ public class BikValidator implements ConstraintValidator<Bik, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return BikValidatorUtil.isValid(value);
+        return Validators.BIK.isValid(value);
     }
 }

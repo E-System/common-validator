@@ -16,9 +16,7 @@
 
 package com.es.lib.validator;
 
-
-
-import com.es.lib.common.validation.KppValidatorUtil;
+import com.es.lib.common.validation.Validators;
 import com.es.lib.validator.annotaion.Kpp;
 
 import javax.validation.ConstraintValidator;
@@ -35,6 +33,6 @@ public class KppValidator implements ConstraintValidator<Kpp, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return KppValidatorUtil.isValid(value);
+        return Validators.KPP.isValid(value);
     }
 }

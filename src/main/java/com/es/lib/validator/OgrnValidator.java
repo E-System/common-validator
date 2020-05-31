@@ -17,7 +17,7 @@
 package com.es.lib.validator;
 
 import com.es.lib.common.validation.OgrnType;
-import com.es.lib.common.validation.OgrnValidatorUtil;
+import com.es.lib.common.validation.Validators;
 import com.es.lib.validator.annotaion.Ogrn;
 
 import javax.validation.ConstraintValidator;
@@ -38,6 +38,6 @@ public class OgrnValidator implements ConstraintValidator<Ogrn, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return OgrnValidatorUtil.isValid(value, type);
+        return Validators.OGRN.isValid(value, type);
     }
 }

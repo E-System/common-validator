@@ -16,7 +16,7 @@
 
 package com.es.lib.validator;
 
-import com.es.lib.common.validation.SnilsValidatorUtil;
+import com.es.lib.common.validation.Validators;
 import com.es.lib.validator.annotaion.Snils;
 
 import javax.validation.ConstraintValidator;
@@ -33,6 +33,6 @@ public class SnilsValidator implements ConstraintValidator<Snils, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return SnilsValidatorUtil.isValid(value);
+        return Validators.SNILS.isValid(value);
     }
 }

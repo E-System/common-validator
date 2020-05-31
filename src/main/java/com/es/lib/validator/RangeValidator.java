@@ -16,7 +16,7 @@
 
 package com.es.lib.validator;
 
-import com.es.lib.common.validation.RangeValidatorUtil;
+import com.es.lib.common.validation.Validators;
 import com.es.lib.validator.annotaion.Range;
 
 import javax.validation.ConstraintValidator;
@@ -37,6 +37,6 @@ public class RangeValidator implements ConstraintValidator<Range, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return RangeValidatorUtil.isValid(value, range);
+        return Validators.RANGE.isValid(value, range);
     }
 }

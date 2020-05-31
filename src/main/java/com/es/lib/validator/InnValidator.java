@@ -16,8 +16,7 @@
 
 package com.es.lib.validator;
 
-
-import com.es.lib.common.validation.InnValidatorUtil;
+import com.es.lib.common.validation.Validators;
 import com.es.lib.validator.annotaion.Inn;
 
 import javax.validation.ConstraintValidator;
@@ -34,6 +33,6 @@ public class InnValidator implements ConstraintValidator<Inn, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return InnValidatorUtil.isValid(value);
+        return Validators.INN.isValid(value);
     }
 }
