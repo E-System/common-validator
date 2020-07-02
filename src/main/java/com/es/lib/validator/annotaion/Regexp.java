@@ -13,25 +13,29 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.es.lib.validator;
+package com.es.lib.validator.annotaion;
 
-import com.es.lib.common.validation.Validators;
-import com.es.lib.validator.annotaion.Kpp;
+import com.es.lib.validator.OgrnValidator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import java.lang.annotation.*;
 
 /**
  * @author Dmitriy Zuzoev - zuzoev.d@ext-system.com
  * @since 25.07.16
  */
-public class KppValidator implements ConstraintValidator<Kpp, String> {
+@Documented
+@Constraint(validatedBy = OgrnValidator.class)
+@Target({ElementType.METHOD, ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Regexp {
 
-    @Override
-    public void initialize(Kpp inn) { }
+    String value();
 
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        return Validators.KPP.isValid(value);
-    }
+    String message() default "{regexp.error}";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

@@ -17,7 +17,7 @@ import javax.validation.Payload
 import java.lang.annotation.Annotation
 
 /**
- * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
+ * @author Dmitriy Zuzoev - zuzoev.d@ext-system.com
  * @since 25.04.15
  */
 class OgrnValidatorSpec extends Specification {

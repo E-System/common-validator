@@ -13,7 +13,6 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
 package com.es.lib.validator;
 
 import com.es.lib.common.validation.OgrnType;
@@ -24,7 +23,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
+ * @author Dmitriy Zuzoev - zuzoev.d@ext-system.com
  * @since 25.07.16
  */
 public class OgrnValidator implements ConstraintValidator<Ogrn, String> {

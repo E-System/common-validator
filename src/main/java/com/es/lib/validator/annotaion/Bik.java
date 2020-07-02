@@ -13,7 +13,6 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
 package com.es.lib.validator.annotaion;
 
 import com.es.lib.validator.InnValidator;
@@ -23,7 +22,7 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 /**
- * @author Zuzoev Dmitry - zuzoev.d@ext-system.com
+ * @author Dmitriy Zuzoev - zuzoev.d@ext-system.com
  * @since 13.06.16
  */
 @Documented

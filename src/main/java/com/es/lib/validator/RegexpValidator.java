@@ -16,7 +16,7 @@
 package com.es.lib.validator;
 
 import com.es.lib.common.validation.Validators;
-import com.es.lib.validator.annotaion.Kpp;
+import com.es.lib.validator.annotaion.Regexp;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -25,13 +25,17 @@ import javax.validation.ConstraintValidatorContext;
  * @author Dmitriy Zuzoev - zuzoev.d@ext-system.com
  * @since 25.07.16
  */
-public class KppValidator implements ConstraintValidator<Kpp, String> {
+public class RegexpValidator implements ConstraintValidator<Regexp, String> {
+
+    private String pattern;
 
     @Override
-    public void initialize(Kpp inn) { }
+    public void initialize(Regexp inn) {
+        pattern = inn.value();
+    }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return Validators.KPP.isValid(value);
+        return Validators.REGEXP.isValid(value, pattern);
     }
 }
