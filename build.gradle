@@ -53,7 +53,7 @@ group = ext.mainGroup
 version = ext.mainVersion + (ext.snapshot ? '-SNAPSHOT' : '')
 
 repositories {
-    jcenter()
+    mavenCentral()
     maven {
         url "${artifactory_contextUrl}/libs-${project.ext.snapshot ? 'all-local' : 'release'}"
         credentials {
