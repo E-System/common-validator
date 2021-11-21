@@ -30,8 +30,8 @@ public class RangeValidator implements ConstraintValidator<Range, String> {
     private String range;
 
     @Override
-    public void initialize(Range inn) {
-        range = inn.value();
+    public void initialize(Range constraint) {
+        range = constraint.value();
     }
 
     @Override

@@ -28,7 +28,7 @@ import javax.validation.ConstraintValidatorContext;
 public class SnilsValidator implements ConstraintValidator<Snils, String> {
 
     @Override
-    public void initialize(Snils snils) { }
+    public void initialize(Snils constraint) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

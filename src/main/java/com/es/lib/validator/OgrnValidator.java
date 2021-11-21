@@ -31,8 +31,8 @@ public class OgrnValidator implements ConstraintValidator<Ogrn, String> {
     private OgrnType type;
 
     @Override
-    public void initialize(Ogrn inn) {
-        type = inn.value();
+    public void initialize(Ogrn constraint) {
+        type = constraint.value();
     }
 
     @Override

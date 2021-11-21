@@ -28,7 +28,7 @@ import javax.validation.ConstraintValidatorContext;
 public class InnValidator implements ConstraintValidator<Inn, String> {
 
     @Override
-    public void initialize(Inn inn) { }
+    public void initialize(Inn constraint) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

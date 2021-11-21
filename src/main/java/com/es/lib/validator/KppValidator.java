@@ -28,7 +28,7 @@ import javax.validation.ConstraintValidatorContext;
 public class KppValidator implements ConstraintValidator<Kpp, String> {
 
     @Override
-    public void initialize(Kpp inn) { }
+    public void initialize(Kpp constraint) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

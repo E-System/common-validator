@@ -30,8 +30,8 @@ public class RegexpValidator implements ConstraintValidator<Regexp, String> {
     private String pattern;
 
     @Override
-    public void initialize(Regexp inn) {
-        pattern = inn.value();
+    public void initialize(Regexp constraint) {
+        pattern = constraint.value();
     }
 
     @Override

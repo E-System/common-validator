@@ -28,7 +28,7 @@ import javax.validation.ConstraintValidatorContext;
 public class BikValidator implements ConstraintValidator<Bik, String> {
 
     @Override
-    public void initialize(Bik inn) { }
+    public void initialize(Bik constraint) { }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
